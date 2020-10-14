@@ -13,12 +13,11 @@
             </li>
         </ul>
     </div>
-    <a href="/login" class="nav-item btn btn-secondary" id="signInBtn">Sign In</a>
-    <a href="/signup" class=" nav-item btn btn-secondary" id="signUpBtn">Sign Up</a>
+    <a href="/owner" class="nav-item btn btn-secondary" id="signUpBtn">Dashboard</a>
+    <a href="#" class="nav-item btn btn-secondary" id="logOutBtn">Log Out</a>
 </nav>
-<div class="container">
-    <h1>Keep track of your pets while you're away</h1>
-    <h2>This will be some sort of description or some other information. Lorem Ipsum etc.</h2>
-</div>
 
-{{!-- <script type="text/javascript" src= "js/index.js"></script> --}}
+<div class="container">
+    {{>pet-block}}
+    <a href="/newpet" class="nav-item btn btn-secondary" id="newPetBtn">Add a new pet</a>
+</div>

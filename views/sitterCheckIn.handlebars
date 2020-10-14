@@ -13,12 +13,18 @@
             </li>
         </ul>
     </div>
-    <a href="/login" class="nav-item btn btn-secondary" id="signInBtn">Sign In</a>
-    <a href="/signup" class=" nav-item btn btn-secondary" id="signUpBtn">Sign Up</a>
+    <a href="/sitter" class=" nav-item btn btn-secondary" id="signUpBtn">Dashboard</a>
 </nav>
 <div class="container">
-    <h1>Keep track of your pets while you're away</h1>
-    <h2>This will be some sort of description or some other information. Lorem Ipsum etc.</h2>
-</div>
+    <div>
+        <p>This div will hold the information about the pets from the pets table</p>
+    </div>
 
-{{!-- <script type="text/javascript" src= "js/index.js"></script> --}}
+    <form>
+        <div class="form-group">
+            <label for="emailInput">Enter the message you'd like to send to the pet owner.</label>
+            <textarea class="form-control" id="emailInput" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>
