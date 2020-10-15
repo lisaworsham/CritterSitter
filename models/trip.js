@@ -42,6 +42,11 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+    trip.associate = function(models) {
+        trip.hasMany(models.checkIn, {
+            onDelete: "cascade"
+        });
+        };
       };
         return trip
 }

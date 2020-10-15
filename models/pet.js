@@ -36,5 +36,10 @@ const petProfile = sequelize.define('petProfile', {
         }
         });
     };
+    petProfile.associate = function(models) {
+        petProfile.hasMany(models.trip, {
+          onDelete: "cascade"
+        });
+      };
     return petProfile
 }

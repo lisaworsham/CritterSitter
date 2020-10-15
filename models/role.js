@@ -48,5 +48,15 @@ module.exports = function(sequelize, DataTypes) {
           }
         });
       };
+    userTable.associate = function(models) {
+        userTable.hasMany(models.petProfile, {
+            onDelete: "cascade"
+        });
+    };
+    userTable.associate = function(models) {
+        userTable.hasMany(models.trip, {
+          onDelete: "cascade"
+        });
+      };
     return userTable
 }
