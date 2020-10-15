@@ -51,6 +51,18 @@ module.exports = function (app) {
     res.render("sitterCheckIn");
   });
 
+  app.get("/services", (req, res) => {
+    res.render("services");
+  });
+
+  app.get("/about", (req, res) => {
+    res.render("about");
+  });
+
+  app.get("/support", (req, res) => {
+    res.render("support");
+  });
+
   // // Here we've add our isAuthenticated middleware to this route.
   // // If a user who is not logged in tries to access this route they will be redirected to the signup page
   // app.get("/members", isAuthenticated, (req, res) => {
