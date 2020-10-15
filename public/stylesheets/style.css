@@ -1,4 +1,15 @@
+.btn-secondary{
+  background-color: darkorange;
+  margin: 0 0.5rem;
+}
+
+
+
 form.signup,
 form.login {
   margin-top: 50px;
+}
+
+#newPetBtn {
+  margin-top: 1rem;
 }

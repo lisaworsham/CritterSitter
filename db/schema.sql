@@ -7,13 +7,7 @@ USE petsafetracker_db;
 ### Passport Login Table???
 -- CREATE TABLE Login
 -- (
--- 	id int AUTO_INCREMENT NOT NULL,
---     Email VARCHAR(50) NOT NULL, 
---     UserPassword VARCHAR(20) NOT NULL,
---     FirstName VARCHAR(30) NOT NULL,
---     LastName VARCHAR(30) NOT NULL,
---     PRIMARY KEY (id)
--- );
+
 
 CREATE TABLE UserTable
 (
