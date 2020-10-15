@@ -7,7 +7,7 @@ USE petsafetracker_db;
 ### Passport Login Table???
 -- CREATE TABLE Login
 -- (
--- 	id 
+
 
 CREATE TABLE UserTable
 (
@@ -24,6 +24,7 @@ CREATE TABLE UserTable
 	PRIMARY KEY (id)
 );
 
+
 CREATE TABLE PetProfile
 (
 	id int AUTO_INCREMENT NOT NULL,
@@ -37,6 +38,7 @@ CREATE TABLE PetProfile
     FOREIGN KEY (id) REFERENCES UserTable(id),
 	PRIMARY KEY (id)
 );
+
 
 CREATE TABLE Trip
 (
@@ -52,6 +54,7 @@ CREATE TABLE Trip
 	PRIMARY KEY (id)
 );
 
+
 CREATE TABLE TripCheckIn
 (
 	id int AUTO_INCREMENT NOT NULL,
@@ -60,6 +63,7 @@ CREATE TABLE TripCheckIn
     FOREIGN KEY (id) REFERENCES Trip(id),
 	PRIMARY KEY (id)
 );
+
 
 SELECT * FROM petsafetracker_db.UserTable;
 SELECT * FROM petsafetracker_db.PetProfile;
