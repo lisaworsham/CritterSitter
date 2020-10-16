@@ -34,7 +34,14 @@ module.exports = function(sequelize, DataTypes) {
                 isNumeric: true
             }
         },
-        Role: {
+        PetOwner: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+        }, 
+        timestamps: true,
+        createdAt: true
+        },
+        PetSitter: {
             type: DataTypes.BOOLEAN,
             allowNull: false
         }, 
