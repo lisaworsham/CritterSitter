@@ -1,20 +1,22 @@
-module.exports = function(sequelize, DataTypes) {    
+module.exports = function (sequelize, DataTypes) {
     const tripCheckIn = sequelize.define('tripCheckIn', {
         Comments: {
             type: DataTypes.TEXT,
             allowNull: true
-        } 
-      },
-      {timestamps: true,
-      createdAt: true}
-    
+        }
+    },
+        {
+            timestamps: true,
+            createdAt: true,
+            freezeTableName: true
+        }
     );
-    tripCheckIn.associate = function(models) {
+    tripCheckIn.associate = function (models) {
         tripCheckIn.belongsTo(models.trip, {
-          foreignKey: {
-            allowNull: false
-          }
+            foreignKey: {
+                allowNull: false
+            }
         });
-      };
+    };
     return tripCheckIn
 }
