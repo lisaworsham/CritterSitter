@@ -7,7 +7,7 @@ $(document).ready(() => {
   const lastNameInput = $("input#last-name");
   const phoneNumInput = $("input#phone-num");
   const zipCodeInput = $("input#zip-code");
-  const roleInput = $(".role-check");
+  // const roleInput = $(".role-check");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
@@ -17,9 +17,9 @@ $(document).ready(() => {
       password: passwordInput.val().trim(),
       firstName: firstNameInput.val().trim(),
       lastName: lastNameInput.val().trim(),
-      phoneNumber: phoneNumInput.val().trim(),
-      zipCode: zipCodeInput.val().trim(),
-      userRole: roleInput.val()
+      phoneNumber: parseInt(phoneNumInput.val().trim()),
+      zipCode: parseInt(zipCodeInput.val().trim()),
+      userRole: $("input[name=role]:checked").val()
     };
 
     if (!userData.email || !userData.password) {
