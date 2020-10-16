@@ -23,12 +23,14 @@ const petProfile = sequelize.define('petProfile', {
     Comments: {
         type: DataTypes.TEXT,
         allowNull: true
-    },
-    timestamps: true,
-    createdAt: true
+    }
     
     
-});
+},
+{timestamps: true,
+createdAt: true}
+
+);
     petProfile.associate = function(models) {
         petProfile.belongsTo(models.userTable, {
         foreignKey: {

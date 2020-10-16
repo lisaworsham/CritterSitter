@@ -37,17 +37,16 @@ module.exports = function(sequelize, DataTypes) {
         PetOwner: {
             type: DataTypes.BOOLEAN,
             allowNull: false
-        }, 
-        timestamps: true,
-        createdAt: true
         },
         PetSitter: {
             type: DataTypes.BOOLEAN,
             allowNull: false
-        }, 
-        timestamps: true,
-        createdAt: true  
-    });
+        } 
+    },
+    {timestamps: true,
+    createdAt: true  }
+    
+    );
     userTable.associate = function(models) {
         userTable.belongsTo(models.User, {
           foreignKey: {

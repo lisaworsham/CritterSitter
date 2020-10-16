@@ -15,6 +15,32 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="password-input" placeholder="Password">
                 </div>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control" id="first-name" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="phone-num">Phone Number</label>
+                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" id="phone-num"
+                        placeholder="000-000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="zip-code">Zip Code</label>
+                    <input type="number" class="form-control" id="zip-code" placeholder="12345">
+                </div>
+                <label for="role-check">Please select one:</label>
+                <div class="form-check">
+                    <input class="form-check-input role-check" type="radio" name="role" id="pet-owner" value="pet-owner" required>
+                    <label class="form-check-label" for="pet-owner">Pet Owner</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input role-check" type="radio" name="role" id="pet-sitter" value="pet-sitter">
+                    <label class="form-check-label" for="pet-sitter">Pet Sitter</label>
+                </div>
                 <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only">Error:</span> <span class="msg"></span>

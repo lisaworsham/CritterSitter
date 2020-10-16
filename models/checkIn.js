@@ -3,10 +3,12 @@ module.exports = function(sequelize, DataTypes) {
         Comments: {
             type: DataTypes.TEXT,
             allowNull: true
-        }, 
-        timestamps: true,
-        createdAt: true
-    });
+        } 
+      },
+      {timestamps: true,
+      createdAt: true}
+    
+    );
     tripCheckIn.associate = function(models) {
         tripCheckIn.belongsTo(models.trip, {
           foreignKey: {
