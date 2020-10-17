@@ -60,6 +60,7 @@ $(document).ready(() => {
       userRole: userRole
     })
       .then(() => {
+        window.location.replace("/members")
         if (userRole === "pet-owner") {
           window.location.replace("/owner");
         } else if (userRole === "pet-sitter") {
