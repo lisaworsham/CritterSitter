@@ -7,7 +7,6 @@ $(document).ready(() => {
   const lastNameInput = $("input#last-name");
   const phoneNumInput = $("input#phone-num");
   const zipCodeInput = $("input#zip-code");
-  // const roleInput = $(".role-check");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
@@ -61,11 +60,11 @@ $(document).ready(() => {
     })
       .then(() => {
         window.location.replace("/members")
-        if (userRole === "pet-owner") {
-          window.location.replace("/owner");
-        } else if (userRole === "pet-sitter") {
-          window.location.replace("/sitter");
-        }
+        // if (userRole === "pet-owner") {
+        //   window.location.replace("/owner");
+        // } else if (userRole === "pet-sitter") {
+        //   window.location.replace("/sitter");
+        // }
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
