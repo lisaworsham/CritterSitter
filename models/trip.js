@@ -26,11 +26,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: true
         },
-    },
-        {
-            timestamps: true,
-            freezeTableName: true
-        }
+    }
     );
     trip.associate = function (models) {
         trip.belongsTo(models.User, {
