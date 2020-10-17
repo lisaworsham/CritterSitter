@@ -37,3 +37,7 @@ $(document).ready(() => {
       });
   }
 });
+
+function getUser(email) {
+  
+}

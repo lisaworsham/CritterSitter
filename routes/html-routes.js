@@ -27,7 +27,7 @@ module.exports = function (app) {
     res.render("signup");
   });
 
-  app.get("/owner", (req, res) => {
+  app.get("/owner", isAuthenticated, (req, res) => {
     res.render("owner");
   });
 
@@ -43,7 +43,7 @@ module.exports = function (app) {
     res.render("newtrip");
   });
 
-  app.get("/sitter", (req, res) => {
+  app.get("/sitter", isAuthenticated, (req, res) => {
     res.render("sitter");
   });
 
@@ -63,9 +63,17 @@ module.exports = function (app) {
     res.render("support");
   });
 
-  // // Here we've add our isAuthenticated middleware to this route.
-  // // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  // app.get("/members", isAuthenticated, (req, res) => {
-  //   res.sendFile(path.join(__dirname, "../public/members.html"));
-  // });
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  app.get("/members", isAuthenticated, (req, res) => {
+    // console.log(req.user)
+    const owner = req.user.PetOwner
+    const sitter = req.user.PetSitter
+    if (owner && !sitter) {
+      res.redirect("/owner");
+    } else if (sitter && !owner) {
+      res.redirect("/sitter");
+    }
+    // res.sendFile(path.join(__dirname, "../public/members.html"));
+  });
 };
