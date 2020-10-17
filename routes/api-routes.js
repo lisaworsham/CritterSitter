@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -40,6 +40,24 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+
+  app.post("/api/newtrip", (req, res) => {
+    console.log(req.body)
+    db.trip.create({
+      TripName: req.body.TripName,
+      FromDate: req.body.FromDate,
+      ToDate: req.body.ToDate,
+      EmergencyContact: req.body.EmergencyContact,
+      Comments: req.body.Comments
+    })
+    .then(() => {
+      console.log("Successfully created new trip");
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(401).json(err);
+    })
+  })
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
