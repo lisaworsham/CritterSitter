@@ -1,9 +1,43 @@
-.btn-secondary{
-  background-color: darkorange;
-  margin: 0 0.5rem;
+body {
+  background-image: url('/images/Critter-Sitter-Back.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
+#home {
+  margin-top: 200px;
+}
 
+h1 {
+  color: rgb(222, 29, 81);
+  font-weight: 800;
+}
+
+.nav-item {
+  font-size: 14pt;
+}
+
+.btn-secondary {
+  background-color: rgb(109, 190, 72);
+  margin: 0 0.5rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-color: white;
+}
+
+.bg-light {
+  background-color: white!important;
+}
+
+.navbar {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
 
 form.signup,
 form.login {
