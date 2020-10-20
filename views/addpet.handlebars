@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {{>nav-block}}
+    <a href="/owner" class=" nav-item btn btn-secondary" id="signUpBtn">Dashboard</a>
+</nav>
+
+<div class="container">
+    <h2>Let's get some information about your pet.</h2>
+    <form class="newtrip">
+        <div class="form-group">
+            <label for="petName">What is your pet's name?</label>
+            <input type="text" class="form-control" id="petName">
+        </div>
+        <div class="form-group">
+            <label for="petType">What type of pet is it?</label>
+            <input type="text" class="form-control" id="petType">
+        </div>
+        <div class="form-group">
+            <label for="petFood">What type of food does your pet eat?</label>
+            <input type="text" class="form-control" id="petFood">
+        </div>
+        <div class="form-group">
+            <label for="foodAmt">How much food should your pet get twice a day (e.g. 1 cup)?</label>
+            <input type="text" class="form-control" id="foodAmt">
+        </div>
+        <div class="form-group">
+            <label for="vetInfo">Please enter Vet information.</label>
+            <textarea type="text" class="form-control" id="vetInfo"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="petComments">Are there any special instruction or comments you'd like to share about your pet/s?</label>
+            <textarea type="text" class="form-control" id="petComments"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Pet</button>
+    </form>
+</div>
+<script type="text/javascript" src="js/addpet.js"></script>
