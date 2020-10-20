@@ -59,6 +59,26 @@ module.exports = function (app) {
     })
   })
 
+  // New Pet
+  app.post("/api/newPet", (req, res) => {
+    console.log(req.body)
+    db.petprofile.create({
+      PetName: req.body.PetName,
+      PetType: req.body.PetType,
+      Food: req.body.Food,
+      FoodAmt: req.body.FoodAmt,
+      VetInfo: req.body.petVet,
+      Comments: req.body.Comments
+    })
+    .then(() => {
+      console.log("Successfully created new pet");
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(401).json(err);
+    })
+  })
+  
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
