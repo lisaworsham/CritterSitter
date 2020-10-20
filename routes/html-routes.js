@@ -3,6 +3,7 @@ const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const db = require("../models");
 
 module.exports = function (app) {
   app.get("/", (req, res) => {
@@ -28,6 +29,7 @@ module.exports = function (app) {
   });
 
   app.get("/owner", isAuthenticated, (req, res) => {
+    console.log(req.user);
     res.render("owner");
   });
 
@@ -40,7 +42,14 @@ module.exports = function (app) {
   });
 
   app.get("/new-trip", (req, res) => {
-    res.render("newtrip");
+    db.User.findAll({
+      where: {
+        PetSitter: true
+      }
+    }).then(sittersList => {
+      res.render("newtrip", {sitters: sittersList.map(sitters => sitters.toJSON())});
+    });
+    // console.log(res)
   });
 
   app.get("/sitter", isAuthenticated, (req, res) => {
