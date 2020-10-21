@@ -14,3 +14,4 @@ module.exports = {
     return queryInterface.bulkDelete('trip', null, {});
   }
 };
+
