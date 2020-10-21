@@ -28,7 +28,7 @@ module.exports = function (app) {
     res.render("signup");
   });
 
-  app.get("/owner", (req, res) => {
+  app.get("/owner", isAuthenticated, (req, res) => {
         // add isAuthenticated after "/owner",
     console.log(req.user);
     res.render("owner");
@@ -53,7 +53,7 @@ module.exports = function (app) {
     // console.log(res)
   });
 
-  app.get("/sitter", (req, res) => {
+  app.get("/sitter", isAuthenticated, (req, res) => {
         // add isAuthenticated after "/sitter",
     res.render("sitter");
   });
@@ -76,7 +76,7 @@ module.exports = function (app) {
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", (req, res) => {
+  app.get("/members", isAuthenticated, (req, res) => {
     // add isAuthenticated after "/members",
     // console.log(req.user)
     const owner = req.user.PetOwner
