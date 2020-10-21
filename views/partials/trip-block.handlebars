@@ -1,5 +1,6 @@
 <div class="card">
-    <h2 class="card-title">Owner Name</h2>
-    <p class="card-text">Dates of trip</p>
-    <a href="/sitterCheckin" class="btn btn-secondary">Check In!</a>
+    <h2 class="card-title">Trip Name: {{TripName}}</h2>
+    <h3 class="card-text">Pet Owner: {{Owner.FirstName}} {{Owner.LastName}}</h3>
+    <p class="card-text">Trip Dates: {{FromDate}} - {{ToDate}}</p>
+    <a href="/sitterCheckin" class="btn btn-secondary checkInBtn" data-owner-email={{Owner.Email}}>Check In!</a>
 </div>
