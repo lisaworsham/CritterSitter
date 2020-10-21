@@ -33,15 +33,13 @@ module.exports = function (sequelize, DataTypes) {
     );
     petProfile.associate = function (models) {
         petProfile.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
+            as: "Owner"
         });
     };
-    petProfile.associate = function (models) {
-        petProfile.hasMany(models.trip, {
-            onDelete: "cascade"
-        });
-    };
+    // petProfile.associate = function (models) {
+    //     petProfile.hasMany(models.trip, {
+    //         onDelete: "cascade"
+    //     });
+    // };
     return petProfile
 }

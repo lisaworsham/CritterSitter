@@ -1,14 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     {{>nav-block}}
-    <a href="#" class=" nav-item btn btn-secondary" id="logOutBtn">Log Out</a>
+    <a href="/logout" class=" nav-item btn btn-secondary" id="logOutBtn">Log Out</a>
 </nav>
 
-<div class="container">
+<div class="container" id="services">
     <h1>Welcome to your Critter Sitter Dashboard!</h1>
     <h2>Which pets are you checking in on?</h2>
     <div>
-
-        {{>trip-block}}
-        
+        {{#each trips}}
+            {{>trip-block}}
+        {{/each}}
     </div>
 </div>
+{{!-- <script type="text/javascript" src="js/sitter-dash.js"></script> --}}

@@ -52,17 +52,28 @@ module.exports = function (sequelize, DataTypes) {
       freezeTableName: true
     }
   );
-  User.associate = function (models) {
-    User.hasMany(models.petProfile, {
-      onDelete: "cascade"
-    });
-  };
-  User.associate = function (models) {
-    User.hasMany(models.trip, {
-      onDelete: "cascade"
-    });
-  };
-
+  // User.associate = function (models) {
+  //   User.hasMany(models.trip, {
+  //     as: "OwnerId",
+  //     onDelete: "cascade"
+  //   });
+  //   User.hasMany(models.trip, {
+  //     as: "PetSitterId",
+  //     onDelete: "cascade"
+  //   });
+  // };
+  // User.associate = function (models) {
+  //   User.hasMany(models.petProfile, {
+  //     onDelete: "cascade"
+  //   });
+  // };
+  // User.associate = function (models) {
+  //   User.hasMany(models.trip, {
+  //     as: "SitterId"
+  //     // onDelete: "cascade"
+  //   });
+  // };
+  
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function (password) {
     // console.log(password)

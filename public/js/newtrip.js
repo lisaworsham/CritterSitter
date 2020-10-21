@@ -6,6 +6,8 @@ $(document).ready(() => {
     const toDateInput = $("input#toDate");
     const emergencyContactInput = $("input#emergencyContact");
     const commentsInput = $("textarea#tripComments");
+    const sitterSelect = $("option.sitter");
+
 
     // When the signup button is clicked, we validate the email and password are not blank
     newTripForm.on("submit", event => {
@@ -15,22 +17,29 @@ $(document).ready(() => {
             from: fromDateInput.val().trim(),
             to: toDateInput.val().trim(),
             emergencyContact: emergencyContactInput.val().trim(),
-            comments: commentsInput.val().trim()
+            comments: commentsInput.val().trim(),
+            sitter: sitterSelect.val()
         };
+        // console.log(tripData)
 
         // if (!userData.email || !userData.password) {
         //     return;
         // }
         // If we have an email and password, run the signUpUser function
-        createTrip(
-            tripData.tripName,
-            tripData.from,
-            tripData.to,
-            tripData.emergencyContact,
-            tripData.comments
-        );
-        // emailInput.val("");
-        // passwordInput.val("");
+        $.get("/api/user_data", (req, res) => {
+            // console.log(req)
+            createTrip(
+                tripData.tripName,
+                tripData.from,
+                tripData.to,
+                tripData.emergencyContact,
+                tripData.comments,
+                req.id,
+                tripData.sitter
+            );
+            // emailInput.val("");
+            // passwordInput.val("");
+        });
     });
 
     // Does a post to the signup route. If successful, we are redirected to the members page
@@ -40,29 +49,33 @@ $(document).ready(() => {
         fromDate,
         toDate,
         emergencyContact,
-        comments
+        comments,
+        ownerId,
+        sitterId
     ) {
-        $.post("/api/newtrip", {
-            TripName: tripName,
-            FromDate: fromDate,
-            ToDate: toDate,
-            EmergencyContact: emergencyContact,
-            Comments: comments
-        })
-            .then(() => {
-                // window.location.replace("/members")
-                // if (userRole === "pet-owner") {
-                //     window.location.replace("/owner");
-                // } else if (userRole === "pet-sitter") {
-                //     window.location.replace("/sitter");
-                // }
-                // If there's an error, handle it by throwing up a bootstrap alert
+            $.post("/api/newtrip", {
+                TripName: tripName,
+                FromDate: fromDate,
+                ToDate: toDate,
+                EmergencyContact: emergencyContact,
+                Comments: comments,
+                OwnerId: ownerId,
+                SitterId: sitterId
             })
-            .catch(handleNewTripErr);
-    }
+                .then(() => {
+                    window.location.replace("/members")
+                    // if (userRole === "pet-owner") {
+                    //     window.location.replace("/owner");
+                    // } else if (userRole === "pet-sitter") {
+                    //     window.location.replace("/sitter");
+                    // }
+                    // If there's an error, handle it by throwing up a bootstrap alert
+                })
+                .catch(handleNewTripErr);
+        }
 
     function handleNewTripErr(err) {
-        $("#alert .msg").text(err.responseJSON);
-        $("#alert").fadeIn(500);
-    }
+            $("#alert .msg").text(err.responseJSON);
+            $("#alert").fadeIn(500);
+        }
 });
