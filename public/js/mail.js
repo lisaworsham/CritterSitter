@@ -12,9 +12,11 @@ $(document).ready(() => {
     //step 1 - transporter
     sendButton.on("click", function () {
         $.post("/api/email", {
-            address: ownerEmail, 
+            address: ownerEmail,
             message: emailBody.val()
         })
+    });
+});
 
 
     //     let transporter = nodemailer.createTransport({
@@ -49,8 +51,6 @@ $(document).ready(() => {
     //     }
     // });
 
-});
-});
 
 // could use this later for evalute errors...
 // sendMail('', '', '', function(err, data) {

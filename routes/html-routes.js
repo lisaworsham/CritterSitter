@@ -30,7 +30,7 @@ module.exports = function (app) {
   });
 
   app.get("/owner", isAuthenticated, (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     res.render("owner");
   });
 
