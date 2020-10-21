@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     {{>nav-block}}
-    <a href="/owner" class=" nav-item btn btn-secondary" id="signUpBtn">Dashboard</a>
+    <a href="/owner" class=" nav-item btn btn-secondary" id="signUpBtn">DASHBOARD</a>
 </nav>
 
 <div class="container" id="services">
+    <h1>Plan A Trip</h1>
     <h2>Let's get some information about your trip.</h2>
     <form class="newtrip">
         <div class="form-group">
@@ -24,8 +25,7 @@
             <input type="text" class="form-control" id="emergencyContact">
         </div>
         <div class="form-group">
-            <label for="tripComments">Are there any special instruction or comments you'd like to share with
-                your sitter?</label>
+            <label for="tripComments">Are there any special instructions or comments you'd like to share with your sitter?</label>
             <textarea type="text" class="form-control" id="tripComments"></textarea>
         </div>
         <div class="form-group">
@@ -36,7 +36,7 @@
                 {{/each}}
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-secondary">SUBMIT</button>
     </form>
 </div>
 <script type="text/javascript" src="js/newtrip.js"></script>
