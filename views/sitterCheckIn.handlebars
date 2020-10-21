@@ -9,9 +9,12 @@
 
     <form>
         <div class="form-group">
+            {{!-- <label for="subjectInput">Enter a subject for your message.</label>
+            <input class="form-control" id="subjectInput" ></input> --}}
             <label for="emailInput">Enter the message you'd like to send to the pet owner.</label>
             <textarea class="form-control" id="emailInput" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Send</button>
+        <button type="submit" class="btn btn-primary" id="emailSendBtn">Send</button>
     </form>
 </div>
+<script type="text/javascript" src="js/mail.js"></script>

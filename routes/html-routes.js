@@ -76,7 +76,7 @@ module.exports = function (app) {
 
   app.get("/sitterCheckin", (req, res) => {
     // console.log(req)
-    // res.render("sitterCheckIn");
+    res.render("sitterCheckIn");
   });
 
   app.get("/services", (req, res) => {
