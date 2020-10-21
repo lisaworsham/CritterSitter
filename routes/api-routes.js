@@ -35,7 +35,7 @@ module.exports = function (app) {
         res.redirect(307, "/api/login");
       })
       .catch(err => {
-        // console.log(err);
+        console.log(err);
         // console.log("hello");
         res.status(401).json(err);
       });
@@ -48,10 +48,13 @@ module.exports = function (app) {
       FromDate: req.body.FromDate,
       ToDate: req.body.ToDate,
       EmergencyContact: req.body.EmergencyContact,
-      Comments: req.body.Comments
+      Comments: req.body.Comments,
+      OwnerId: req.body.OwnerId,
+      SitterId: req.body.SitterId
     })
     .then(() => {
       console.log("Successfully created new trip");
+      res.redirect("/members")
     })
     .catch(err => {
       console.log(err)
@@ -59,6 +62,11 @@ module.exports = function (app) {
     })
   })
 
+  // Sitter Checkin
+  app.get("/api/sitterCheckin", (req,res) => {
+    db.User.findOne({where: {id:req.id}}).then(res.redirect("/sitterCheckin"))
+    // console.log(req)
+  })
   // New Pet
   app.post("/api/newPet", (req, res) => {
     console.log(req.body)
@@ -93,9 +101,9 @@ module.exports = function (app) {
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      // console.log(req.user);
+      // console.log(req);
       res.json({
-        email: req.user.email,
+        email: req.user.Email,
         id: req.user.id
       });
     }
