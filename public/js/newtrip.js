@@ -6,7 +6,7 @@ $(document).ready(() => {
     const toDateInput = $("input#toDate");
     const emergencyContactInput = $("input#emergencyContact");
     const commentsInput = $("textarea#tripComments");
-    const sitterSelect = $("option.sitter");
+    const sitterSelect = $("select#sitterSelect");
 
 
     // When the signup button is clicked, we validate the email and password are not blank
@@ -18,7 +18,7 @@ $(document).ready(() => {
             to: toDateInput.val().trim(),
             emergencyContact: emergencyContactInput.val().trim(),
             comments: commentsInput.val().trim(),
-            sitter: sitterSelect.val()
+            sitter: sitterSelect.find("option:selected").val()
         };
         // console.log(tripData)
 

@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+require('dotenv').config();
+const nodemailer = require('nodemailer');
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -20,7 +22,7 @@ module.exports = function (app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     db.User.create({
       Email: req.body.email,
       UserPassword: req.body.password,
@@ -35,7 +37,7 @@ module.exports = function (app) {
         res.redirect(307, "/api/login");
       })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
         // console.log("hello");
         res.status(401).json(err);
       });
@@ -52,21 +54,54 @@ module.exports = function (app) {
       OwnerId: req.body.OwnerId,
       SitterId: req.body.SitterId
     })
-    .then(() => {
-      console.log("Successfully created new trip");
-      res.redirect("/members")
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(401).json(err);
-    })
+      .then(() => {
+        console.log("Successfully created new trip");
+        res.redirect("/members")
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(401).json(err);
+      })
   })
 
   // Sitter Checkin
-  app.get("/api/sitterCheckin", (req,res) => {
-    db.User.findOne({where: {id:req.id}}).then(res.redirect("/sitterCheckin"))
+  app.get("/api/sitterCheckin", (req, res) => {
+    db.User.findOne({ where: { id: req.id } }).then(res.redirect("/sitterCheckin"))
     // console.log(req)
   })
+
+  app.post("/api/email", (req, res) => {
+    // console.log(req.body)
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: "critter.sitter.safe@gmail.com",
+        pass: "CritterSitter#"
+      }
+    })
+    // const sendMail = (email, subject, text, cb) => {
+    //step 2 - e-mail
+    let mailOptions = {
+      from: "critter.sitter.safe@gmail.com",
+      to: req.body.address,
+      subject: "Critter Sitter Update",
+      text: req.body.message
+    };
+
+    // }
+    // step 3 - send mail
+    transporter.sendMail(mailOptions, function (err, data) {
+      if (err) {
+        cb(err, null);
+        console.log('error!!! oh no!', err);
+      } else {
+        cb(null, data);
+        console.log('email sent!!!');
+      }
+    })
+  });
+
+
   // New Pet
   app.post("/api/newPet", (req, res) => {
     console.log(req.body)
@@ -78,15 +113,15 @@ module.exports = function (app) {
       VetInfo: req.body.petVet,
       Comments: req.body.Comments
     })
-    .then(() => {
-      console.log("Successfully created new pet");
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(401).json(err);
-    })
+      .then(() => {
+        console.log("Successfully created new pet");
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(401).json(err);
+      })
   })
-  
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
