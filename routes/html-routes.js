@@ -8,12 +8,7 @@ const db = require("../models");
 
 module.exports = function (app) {
   app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
-    // if (req.user) {
-    //   res.redirect("/members");
-    // }
     res.render("index");
-    // res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", (req, res) => {
@@ -30,14 +25,11 @@ module.exports = function (app) {
   });
 
   app.get("/owner", isAuthenticated, (req, res) => {
-    // add isAuthenticated after "/owner",
-    // console.log(req.user);
     db.petProfile.findAll({
       where: {
         OwnerId: req.user.id
       }
     }).then(petList => {
-      // petList.map(pets => pets.toJSON());
       db.trip.findAll({
         where: {
           OwnerId: req.user.id
@@ -52,13 +44,15 @@ module.exports = function (app) {
           pets: petList.map(pets => pets.toJSON())
         })
       })
-      // console.log(petList)
-      // res.render("owner", { pets: petList.map(pets => pets.toJSON()) });
     })
   });
 
-  app.get("/pet-info", isAuthenticated, (req, res) => {
-    res.render("petinfo");
+  app.get("/pet-info", (req, res) => {
+      db.petProfile.findAll({
+        where: {OwnerId: req._parsedOriginalUrl.query}
+      }).then(petList => {
+        res.render("petinfo", {pets: petList.map(pets => pets.toJSON())})
+      })
   });
 
   app.get("/newpet", isAuthenticated, (req, res) => {
@@ -81,8 +75,6 @@ module.exports = function (app) {
   });
 
   app.get("/sitter", isAuthenticated, (req, res) => {
-    // add isAuthenticated after "/sitter",
-    // console.log(req.user)
     db.trip.findAll({
       where: {
         SitterID: req.user.id
@@ -92,14 +84,11 @@ module.exports = function (app) {
         as: "Owner"
       }
     }).then(tripList => {
-      // console.log(tripList)
       res.render("sitter", { trips: tripList.map(trips => trips.toJSON()) });
     });
-    // res.render("sitter");
   });
 
   app.get("/sitterCheckin", isAuthenticated, (req, res) => {
-    // console.log(req)
     res.render("sitterCheckIn");
   });
 
@@ -115,11 +104,7 @@ module.exports = function (app) {
     res.render("support");
   });
 
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
-    // add isAuthenticated after "/members",
-    // console.log(req.user)
     const owner = req.user.PetOwner
     const sitter = req.user.PetSitter
     if (owner && !sitter) {
@@ -127,6 +112,5 @@ module.exports = function (app) {
     } else if (sitter && !owner) {
       res.redirect("/sitter");
     }
-    // res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 };
