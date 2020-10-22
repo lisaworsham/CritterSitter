@@ -1,10 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     {{>nav-block}}
-    <a href="/owner" class="nav-item btn btn-secondary" id="signUpBtn">DASHBOARD</a>
+    <a href="/members" class="nav-item btn btn-secondary" id="signUpBtn">DASHBOARD</a>
     <a href="#" class="nav-item btn btn-secondary" id="logOutBtn">LOG OUT</a>
 </nav>
 
 <div class="container" id="services">
+    {{#each pets}}
     {{>pet-block}}
-    <a href="/newpet" class="nav-item btn btn-secondary" id="newPetBtn">ADD PET</a>
+    {{/each}}
 </div>

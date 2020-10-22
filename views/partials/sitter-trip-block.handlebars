@@ -3,6 +3,7 @@
     <div class="card-body">
     <h5 class="card-text">Pet Owner: {{Owner.FirstName}} {{Owner.LastName}}</h5>
     <p class="card-text">Trip Dates: {{FromDate}} - {{ToDate}}</p>
+    <a href="/pet-info?{{Owner.id}}" class="btn btn-secondary">View information about {{Owner.FirstName}}'s pets</a>
     <a href="/sitterCheckin?email={{Owner.Email}}" class="btn btn-secondary checkInBtn" data-owner-email={{Owner.Email}}>Send a message to {{Owner.FirstName}}</a>
     </div>
 </div>

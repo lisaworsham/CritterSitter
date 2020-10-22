@@ -44,7 +44,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/newtrip", (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     db.trip.create({
       TripName: req.body.TripName,
       FromDate: req.body.FromDate,
@@ -105,7 +105,7 @@ module.exports = function (app) {
 
   // New Pet
   app.post("/api/newPet", (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     db.petProfile.create({
       PetName: req.body.PetName,
       PetType: req.body.PetType,
