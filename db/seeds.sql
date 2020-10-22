@@ -1,7 +1,7 @@
 ### Pet Safe Tracker seeds
 
-INSERT INTO UserTable (UserName, UserPassword, FirstName, LastName, PhoneNum, Email, Role, ZipCode) 
-	VALUES ('My User Name', 'My Password', 'Joe', 'Boxer', 5555555555, 'test@gmail.com', false, 77777);
+INSERT INTO User (Email, UserPassword, FirstName, LastName, PhoneNum, ZipCode, PetOwner, PetSitter) 
+	VALUES ('meg_griff@toon.com', 'megg', 'Meg', 'Griffin', 1234567890, 77090, false, true);
 
 INSERT INTO User (Email, UserPassword, FirstName, LastName, PhoneNum, ZipCode, PetOwner, PetSitter) 
-	VALUES ('My User Name', 'My Password', 'Joe', 'Boxer', 5555555555, 'test@gmail.com', false, 77777);
+	VALUES ('dalmationlove@dis.org', 'puppies', 'Cruella', 'de Vil', 1234567890, 77101, false, true);
