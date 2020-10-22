@@ -11,16 +11,10 @@ module.exports = {
       ZipCode: '12345',
       PetOwner: true,
       PetSitter: false,
-    }]);
-  },
-  down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('User', null, {});
-  }
-};
-
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('User', [{
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
       Email: 'shaggy@mysteryinc.org',
       UserPassword: 'food',
       FirstName: 'Cesar',
@@ -29,9 +23,13 @@ module.exports = {
       ZipCode: '54321',
       PetOwner: false,
       PetSitter: true,
-    }]);
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+  ]);
   },
   down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('User', null, {});
   }
 };
+

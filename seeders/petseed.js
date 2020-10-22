@@ -9,6 +9,8 @@ module.exports = {
       FoodAmt: 'More than enough', 
       VetInfo: '1112223333',
       Comments: 'Dog must eat every half hour',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }]);
   },
   down: async (queryInterface, Sequelize) => {
