@@ -30,6 +30,7 @@ module.exports = function (app) {
   });
 
   app.get("/owner", isAuthenticated, (req, res) => {
+        // add isAuthenticated after "/owner",
     // console.log(req.user);
     res.render("owner");
   });
@@ -58,6 +59,7 @@ module.exports = function (app) {
   });
 
   app.get("/sitter", isAuthenticated, (req, res) => {
+        // add isAuthenticated after "/sitter",
     // console.log(req.user)
     db.trip.findAll({
       where: {
@@ -94,6 +96,7 @@ module.exports = function (app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
+    // add isAuthenticated after "/members",
     // console.log(req.user)
     const owner = req.user.PetOwner
     const sitter = req.user.PetSitter
