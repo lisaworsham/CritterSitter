@@ -58,6 +58,7 @@ $(document).ready(() => {
             OwnerId: ownerId
         })
             .then(() => {
+                window.location.replace("/members")
             })
             .catch(handleNewPetErr);
     }

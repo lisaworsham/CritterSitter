@@ -116,6 +116,7 @@ module.exports = function (app) {
     })
       .then(() => {
         console.log("Successfully created new pet");
+        res.redirect("/members")
       })
       .catch(err => {
         console.log(err)
