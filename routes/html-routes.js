@@ -57,19 +57,19 @@ module.exports = function (app) {
     })
   });
 
-  app.get("/pet-info", (req, res) => {
+  app.get("/pet-info", isAuthenticated, (req, res) => {
     res.render("petinfo");
   });
 
-  app.get("/newpet", (req, res) => {
+  app.get("/newpet", isAuthenticated, (req, res) => {
     res.render("addpet");
   });
 
-  app.get("/ownerCheckin", (req, res) => {
+  app.get("/ownerCheckin", isAuthenticated, (req, res) => {
     res.render("ownerCheckin");
   });
 
-  app.get("/new-trip", (req, res) => {
+  app.get("/new-trip", isAuthenticated, (req, res) => {
     db.User.findAll({
       where: {
         PetSitter: true
@@ -98,7 +98,7 @@ module.exports = function (app) {
     // res.render("sitter");
   });
 
-  app.get("/sitterCheckin", (req, res) => {
+  app.get("/sitterCheckin", isAuthenticated, (req, res) => {
     // console.log(req)
     res.render("sitterCheckIn");
   });
