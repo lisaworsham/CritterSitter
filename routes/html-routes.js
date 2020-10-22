@@ -49,11 +49,7 @@ module.exports = function (app) {
 
   app.get("/pet-info", (req, res) => {
       db.petProfile.findAll({
-        where: {OwnerId: req._parsedOriginalUrl.query},
-        include: {
-          model: db.User,
-          as: "Owner"
-        }
+        where: {OwnerId: req._parsedOriginalUrl.query}
       }).then(petList => {
         res.render("petinfo", {pets: petList.map(pets => pets.toJSON())})
       })
