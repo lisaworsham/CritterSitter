@@ -26,11 +26,8 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     PhoneNum: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isNumeric: true
-      }
+      type: DataTypes.STRING,
+      allowNull: false
     },
     ZipCode: {
       type: DataTypes.INTEGER,
