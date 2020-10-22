@@ -4,16 +4,19 @@
 
 $(document).ready(() => {
 
-    const ownerEmailSearch = new URLSearchParams(window.location.search)
-    const ownerEmail = ownerEmailSearch.get("email")
+    const recipientEmailSearch = new URLSearchParams(window.location.search)
+    const recipientEmail = recipientEmailSearch.get("email")
     const emailBody = $("textarea#emailInput")
     const sendButton = $("button#emailSendBtn")
     ///////////////////////
     //step 1 - transporter
-    sendButton.on("click", function () {
+    sendButton.on("click", event => {
+        event.preventDefault()
         $.post("/api/email", {
-            address: ownerEmail,
+            address: recipientEmail,
             message: emailBody.val()
+        }).then(() => {
+            window.location.replace("/members")
         })
     });
 });

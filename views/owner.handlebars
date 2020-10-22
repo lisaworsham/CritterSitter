@@ -11,8 +11,24 @@
         <h2>What would you like to do?</h2>
     </div>
     <div class="row add-space">
-    <a href="/pet-info" class="btn btn-secondary btn-block">ADD/EDIT PET</a>
-    <a href="/owner-checkin" class="btn btn-secondary btn-block">CHECK ON PET</a>
-    <a href="/new-trip" class="btn btn-secondary btn-block">PLAN A TRIP</a>
+        <a href="/newpet" class="btn btn-secondary btn-block">ADD A NEW PET</a>
+        {{!-- <a href="/owner-checkin" class="btn btn-secondary btn-block">CHECK ON PET</a> --}}
+        <a href="/new-trip" class="btn btn-secondary btn-block">PLAN A TRIP</a>
+    </div>
+    <div class="row add-space">
+        <h2>Here Are the pets you have on file:</h2>
+    </div>
+    <div class="row add-space card-group">
+        {{#each pets}}
+        {{>pet-block}}
+        {{/each}}
+    </div>
+    <div class="row add-space">
+        <h2>Here are the trips you have planned:</h2>
+    </div>
+    <div class="row add-space card-group">
+        {{#each trips}}
+        {{>owner-trip-block}}
+        {{/each}}
     </div>
 </div>
