@@ -105,13 +105,14 @@ module.exports = function (app) {
   // New Pet
   app.post("/api/newPet", (req, res) => {
     console.log(req.body)
-    db.petprofile.create({
+    db.petProfile.create({
       PetName: req.body.PetName,
       PetType: req.body.PetType,
       Food: req.body.Food,
       FoodAmt: req.body.FoodAmt,
-      VetInfo: req.body.petVet,
-      Comments: req.body.Comments
+      VetInfo: req.body.VetInfo,
+      Comments: req.body.Comments,
+      OwnerId: req.body.OwnerId
     })
       .then(() => {
         console.log("Successfully created new pet");

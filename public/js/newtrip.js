@@ -53,29 +53,23 @@ $(document).ready(() => {
         ownerId,
         sitterId
     ) {
-            $.post("/api/newtrip", {
-                TripName: tripName,
-                FromDate: fromDate,
-                ToDate: toDate,
-                EmergencyContact: emergencyContact,
-                Comments: comments,
-                OwnerId: ownerId,
-                SitterId: sitterId
+        $.post("/api/newtrip", {
+            TripName: tripName,
+            FromDate: fromDate,
+            ToDate: toDate,
+            EmergencyContact: emergencyContact,
+            Comments: comments,
+            OwnerId: ownerId,
+            SitterId: sitterId
+        })
+            .then(() => {
+                window.location.replace("/members")
             })
-                .then(() => {
-                    window.location.replace("/members")
-                    // if (userRole === "pet-owner") {
-                    //     window.location.replace("/owner");
-                    // } else if (userRole === "pet-sitter") {
-                    //     window.location.replace("/sitter");
-                    // }
-                    // If there's an error, handle it by throwing up a bootstrap alert
-                })
-                .catch(handleNewTripErr);
-        }
+            .catch(handleNewTripErr);
+    }
 
     function handleNewTripErr(err) {
-            $("#alert .msg").text(err.responseJSON);
-            $("#alert").fadeIn(500);
-        }
+        $("#alert .msg").text(err.responseJSON);
+        $("#alert").fadeIn(500);
+    }
 });
