@@ -5,7 +5,7 @@ const session = require("express-session");
 const passport = require("./config/passport");
 
 //nodemailer
-const sendMail = require('./mail.js');
+// const sendMail = require('./public/js/mail.js');
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;

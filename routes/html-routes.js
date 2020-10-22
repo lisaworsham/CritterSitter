@@ -1,5 +1,6 @@
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
+const { brotliDecompress } = require("zlib");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -30,12 +31,16 @@ module.exports = function (app) {
 
   app.get("/owner", isAuthenticated, (req, res) => {
         // add isAuthenticated after "/owner",
-    console.log(req.user);
+    // console.log(req.user);
     res.render("owner");
   });
 
   app.get("/pet-info", (req, res) => {
     res.render("petinfo");
+  });
+
+  app.get("/newpet", (req, res) => {
+    res.render("addpet");
   });
 
   app.get("/owner-checkin", (req, res) => {
@@ -48,17 +53,31 @@ module.exports = function (app) {
         PetSitter: true
       }
     }).then(sittersList => {
-      res.render("newtrip", {sitters: sittersList.map(sitters => sitters.toJSON())});
+      res.render("newtrip", { sitters: sittersList.map(sitters => sitters.toJSON()) });
     });
     // console.log(res)
   });
 
   app.get("/sitter", isAuthenticated, (req, res) => {
         // add isAuthenticated after "/sitter",
-    res.render("sitter");
+    // console.log(req.user)
+    db.trip.findAll({
+      where: {
+        SitterID : req.user.id
+      },
+      include: {
+        model: db.User,
+        as: "Owner"
+      }
+    }).then(tripList => {
+      // console.log(tripList)
+      res.render("sitter", { trips: tripList.map(trips => trips.toJSON()) });
+    });
+    // res.render("sitter");
   });
 
   app.get("/sitterCheckin", (req, res) => {
+    // console.log(req)
     res.render("sitterCheckIn");
   });
 
