@@ -1,20 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     {{>nav-block}}
-    <a href="/sitter" class=" nav-item btn btn-secondary" id="signUpBtn">Dashboard</a>
+    <a href="/sitter" class=" nav-item btn btn-secondary" id="signUpBtn">DASHBOARD</a>
 </nav>
 <div class="container" id="services">
-    <div>
+    <h1>Provide Update on Pet</h1>
+    {{!-- <div>
         <p>This div will hold the information about the pets from the pets table. Holds what relevant info the sitter needs.</p>
-    </div>
+    </div> --}}
 
     <form>
         <div class="form-group">
-            {{!-- <label for="subjectInput">Enter a subject for your message.</label>
-            <input class="form-control" id="subjectInput" ></input> --}}
+            <label for="subjectInput">Enter a subject for your message.</label>
+            <input class="form-control" id="subjectInput" ></input>
             <label for="emailInput">Enter the message you'd like to send to the pet owner.</label>
             <textarea class="form-control" id="emailInput" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" id="emailSendBtn">Send</button>
+        <button type="submit" class="btn btn-secondary" id="emailSendBtn">SEND</button>
     </form>
 </div>
 <script type="text/javascript" src="js/mail.js"></script>
