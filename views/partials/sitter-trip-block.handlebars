@@ -1,0 +1,9 @@
+<div class="card block">
+    <h4 class="card-header">Trip Name: {{TripName}}</h4>
+    <div class="card-body">
+    <h5 class="card-text">Pet Owner: {{Owner.FirstName}} {{Owner.LastName}}</h5>
+    <p class="card-text">Trip Dates: {{FromDate}} - {{ToDate}}</p>
+    <a href="/sitterCheckin?email={{Owner.Email}}" class="btn btn-secondary checkInBtn" data-owner-email={{Owner.Email}}>Send a message to {{Owner.FirstName}}</a>
+    </div>
+</div>
+

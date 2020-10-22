@@ -61,8 +61,7 @@ $(document).ready(() => {
             Comments: comments,
             OwnerId: ownerId,
             SitterId: sitterId
-        })
-            .then(() => {
+        }).then(() => {
                 window.location.replace("/members")
             })
             .catch(handleNewTripErr);

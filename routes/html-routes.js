@@ -30,9 +30,31 @@ module.exports = function (app) {
   });
 
   app.get("/owner", isAuthenticated, (req, res) => {
-        // add isAuthenticated after "/owner",
+    // add isAuthenticated after "/owner",
     // console.log(req.user);
-    res.render("owner");
+    db.petProfile.findAll({
+      where: {
+        OwnerId: req.user.id
+      }
+    }).then(petList => {
+      // petList.map(pets => pets.toJSON());
+      db.trip.findAll({
+        where: {
+          OwnerId: req.user.id
+        },
+        include: {
+          model: db.User,
+          as: "Sitter"
+        }
+      }).then(tripList => {
+        res.render("owner", {
+          trips: tripList.map(trips => trips.toJSON()),
+          pets: petList.map(pets => pets.toJSON())
+        })
+      })
+      // console.log(petList)
+      // res.render("owner", { pets: petList.map(pets => pets.toJSON()) });
+    })
   });
 
   app.get("/pet-info", (req, res) => {
@@ -43,7 +65,7 @@ module.exports = function (app) {
     res.render("addpet");
   });
 
-  app.get("/owner-checkin", (req, res) => {
+  app.get("/ownerCheckin", (req, res) => {
     res.render("ownerCheckin");
   });
 
@@ -59,11 +81,11 @@ module.exports = function (app) {
   });
 
   app.get("/sitter", isAuthenticated, (req, res) => {
-        // add isAuthenticated after "/sitter",
+    // add isAuthenticated after "/sitter",
     // console.log(req.user)
     db.trip.findAll({
       where: {
-        SitterID : req.user.id
+        SitterID: req.user.id
       },
       include: {
         model: db.User,

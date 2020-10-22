@@ -90,13 +90,14 @@ module.exports = function (app) {
 
     // }
     // step 3 - send mail
-    transporter.sendMail(mailOptions, function (err, data) {
+    transporter.sendMail(mailOptions, function (err, info) {
       if (err) {
-        cb(err, null);
+        // cb(err, null);
         console.log('error!!! oh no!', err);
       } else {
-        cb(null, data);
+        // cb(null, data);
         console.log('email sent!!!');
+        res.redirect("/members")
       }
     })
   });
