@@ -2,7 +2,7 @@
 Project 2
 
 * ['Git Hub'](https://github.com/lisaworsham/project2)
-* ['Heroku'](http://projecttwo2.herokuapp.com/)
+* ['Heroku'](https://crittersitterapp.herokuapp.com/)
 * ['Early Concept UX Design'](https://xd.adobe.com/view/b9dc6cd7-bed3-4fef-9d17-9a2788625088-ec8f/)
 * ['Pitch'](https://docs.google.com/presentation/d/1tm3dkqf8nOqXciRqlrEbQRcGtAWxNU64Ym6ECxAbIwA/edit?usp=sharing)
 
